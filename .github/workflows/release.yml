@@ -3,36 +3,38 @@ name: Release
 on:
     push:
         tags:
-            - 'v*.*.*'
+            - 'v*.*.*' # Aciona o workflow quando uma tag que segue o padrão vX.X.X é enviada
+
+permissions:
+    contents: write # Concede permissão de escrita ao GITHUB_TOKEN
 
 jobs:
     create-release:
         runs-on: ubuntu-latest
+
         steps:
             - name: Checkout code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v3 # Faz o checkout do código
 
             - name: Set up Node.js
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v3 # Configura o Node.js
               with:
                   node-version: '18'
 
             - name: Install dependencies
-              run: npm install
+              run: npm install # Instala as dependências do projeto
 
             - name: Build the project
-              run: npm run build
+              run: npm run build # Constrói o projeto
 
             - name: Create Release
-              uses: actions/create-release@v1
+              uses: ncipollo/release-action@v1 # Cria a release e faz upload dos assets
               with:
-                  tag_name: ${{ github.ref }}
-                  release_name: Release ${{ github.ref }}
+                  tag: ${{ github.ref }} # Usa a tag que acionou o workflow
+                  name: Release ${{ github.ref }}
                   body: |
                       Versão ${{ github.ref }} lançada.
-                  draft: false
-                  prerelease: false
-                  files: |
-                      ./dist/**
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  draft: false # Define se a release é um rascunho
+                  prerelease: false # Define se a release é uma prévia
+                  artifacts: ./dist/** # Caminho para os arquivos a serem anexados
+                  token: ${{ secrets.GITHUB_TOKEN }} # Token de autenticação
