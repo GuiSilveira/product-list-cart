@@ -16,10 +16,14 @@ function Card({ item, handleAddToCart, handleRemoveFromCart }: CardProps) {
     return (
         <div>
             <div className="relative flex flex-col items-center">
-                <img src={item.image.mobile} alt="Waffle" className="rounded-lg" />
+                <img
+                    src={item.image.mobile}
+                    alt={item.category}
+                    className={`rounded-lg ${quantity > 0 ? 'border-2 border-solid border-red' : ''}`}
+                />
                 {quantity === 0 && (
                     <button
-                        className="absolute top-2/3 translate-y-12 font-medium py-2 px-7 rounded-full border flex items-center gap-2"
+                        className="absolute top-2/3 translate-y-12 border-rose-400 bg-white text-preset-4-semi-bold text-rose-900 py-2 px-7 rounded-full border flex items-center gap-2 min-w-36 min-h-11"
                         onClick={() => {
                             handleAddToCart(item)
                             setQuantity(quantity + 1)
@@ -30,21 +34,23 @@ function Card({ item, handleAddToCart, handleRemoveFromCart }: CardProps) {
                     </button>
                 )}
                 {quantity > 0 && (
-                    <div className="absolute top-2/3 translate-y-12 font-medium py-2 px-7 rounded-full border flex items-center gap-2">
+                    <div className="absolute top-2/3 translate-y-12 font-medium rounded-full flex items-center justify-between gap-2 bg-red text-white min-w-36 min-h-11 px-3 py-3">
                         <button
                             onClick={() => {
                                 setQuantity(quantity - 1)
                                 handleRemoveFromCart(item)
                             }}
+                            className="border w-5 h-5 rounded-full flex items-center justify-center"
                         >
                             <Decrement />
                         </button>
-                        <span>{quantity}</span>
+                        <span className="text-preset-4-semi-bold">{quantity}</span>
                         <button
                             onClick={() => {
                                 setQuantity(quantity + 1)
                                 handleAddToCart(item)
                             }}
+                            className="border w-5 h-5 rounded-full flex items-center justify-center"
                         >
                             <Increment />
                         </button>
@@ -52,9 +58,9 @@ function Card({ item, handleAddToCart, handleRemoveFromCart }: CardProps) {
                 )}
             </div>
             <div className="mt-[2.5rem]">
-                <h2 className="text-2xl font-bold">{item.category}</h2>
-                <p className="text-lg">{item.name}</p>
-                <p className="text-lg">${item.price.toFixed(2)}</p>
+                <h2 className="text-preset-4 text-rose-500">{item.category}</h2>
+                <p className="text-preset-3 text-rose-900">{item.name}</p>
+                <p className="text-preset-3 text-red">${item.price.toFixed(2)}</p>
             </div>
         </div>
     )

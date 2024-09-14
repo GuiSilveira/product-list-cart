@@ -84,7 +84,7 @@ function App() {
 
     return (
         <main className="m-6">
-            <h1 className="text-3xl font-bold mb-8">Desserts</h1>
+            <h1 className="text-preset-1 mb-8 text-rose-900">Desserts</h1>
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {data.map((item, index) => (
                     <li key={index}>
