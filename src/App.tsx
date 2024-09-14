@@ -56,6 +56,7 @@ function App() {
     }
 
     const handleRemoveFromCart = (item: Item) => {
+        console.log(item);
         setTotal(total - item.price)
 
         const itemAlreadyInCart = cart.find((cartItem) => cartItem.name === item.name)
