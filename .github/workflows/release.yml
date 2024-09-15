@@ -36,5 +36,5 @@ jobs:
                       Versão ${{ github.ref }} lançada.
                   draft: false # Define se a release é um rascunho
                   prerelease: false # Define se a release é uma prévia
-                  artifacts: ./dist/** # Caminho para os arquivos a serem anexados
+                  artifacts: ./dist/**/*.* # Caminho para os arquivos a serem anexados
                   token: ${{ secrets.GITHUB_TOKEN }} # Token de autenticação

@@ -23,7 +23,7 @@ function App() {
     const [modal, setModal] = useState(false)
 
     useEffect(() => {
-        fetch('../data.json', {
+        fetch('/product-list-cart/data.json', {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
@@ -34,6 +34,9 @@ function App() {
             })
             .then((data) => {
                 setData(data)
+            })
+            .catch((error) => {
+                console.error('Error ao carregar dados:', error)
             })
     }, [])
 
@@ -56,7 +59,7 @@ function App() {
     }
 
     const handleRemoveFromCart = (item: Item) => {
-        console.log(item);
+        console.log(item)
         setTotal(total - item.price)
 
         const itemAlreadyInCart = cart.find((cartItem) => cartItem.name === item.name)
