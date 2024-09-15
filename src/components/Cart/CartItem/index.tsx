@@ -1,9 +1,9 @@
-import { Item } from '../../../App'
+import { CartItem as CartProduct } from '../../../App'
 import RemoveItem from '../../../assets/images/icon-remove-item.svg'
 
 type CartItemProps = {
-    item: Item
-    handleRemoveFromCart: (item: Item) => void
+    item: CartProduct
+    handleRemoveFromCart: (item: CartProduct) => void
 }
 
 function CartItem({ item, handleRemoveFromCart }: CartItemProps) {

@@ -13,11 +13,14 @@ export type Item = {
     name: string
     category: string
     price: number
+}
+
+export type CartItem = Item & {
     quantity: number
 }
 
 function App() {
-    const [cart, setCart] = useState<Item[]>([])
+    const [cart, setCart] = useState<CartItem[]>([])
     const [total, setTotal] = useState(0)
     const [data, setData] = useState([])
     const [modal, setModal] = useState(false)
@@ -59,7 +62,6 @@ function App() {
     }
 
     const handleRemoveFromCart = (item: Item) => {
-        console.log(item)
         setTotal(total - item.price)
 
         const itemAlreadyInCart = cart.find((cartItem) => cartItem.name === item.name)
@@ -94,6 +96,7 @@ function App() {
                     <li key={index}>
                         <Card
                             item={item}
+                            cart={cart}
                             handleAddToCart={handleAddToCart}
                             handleRemoveFromCart={handleRemoveFromCart}
                         />
