@@ -1,9 +1,9 @@
-import { Item } from '../../App'
+import { CartItem as CartProduct, Item } from '../../App'
 import CarbonNeutral from '../../assets/images/icon-carbon-neutral.svg'
 import CartItem from './CartItem'
 
 type CartProps = {
-    cart: Item[]
+    cart: CartProduct[]
     handleRemoveFromCart: (item: Item) => void
     handleModal: () => void
 }
