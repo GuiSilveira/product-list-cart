@@ -1,8 +1,8 @@
-import { Item } from '../../App'
+import { CartItem } from '../../App'
 import OrderConfirmed from '../../assets/images/icon-order-confirmed.svg'
 
 type ModalProps = {
-    cart: Item[]
+    cart: CartItem[]
     handleModal: () => void
     handleClearCart: () => void
 }
