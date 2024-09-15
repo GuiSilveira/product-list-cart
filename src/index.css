@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'Red Hat Text';
-    src: url('../public/fonts/RedHatText-VariableFont_wght.ttf');
+    src: url('/product-list-cart/fonts/RedHatText-VariableFont_wght.ttf');
 }
 
 :root {
