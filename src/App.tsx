@@ -45,7 +45,6 @@ function App() {
 
     const handleAddToCart = (item: Item) => {
         setTotal(total + item.price)
-        console.log(total)
 
         const itemAlreadyInCart = cart.find((cartItem) => cartItem.name === item.name)
 
